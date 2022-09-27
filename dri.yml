@@ -1,0 +1,24 @@
+---
+- hosts: web
+  gather_facts: true
+  tasks:
+    - name: create a directory
+      ansible.builtin.file:
+        path: /opt/nikhil23
+        state: absent
+
+    - name: create a file
+      ansible.builtin.file:
+        path: /opt/nikhil.xml
+        state: $ANSIBLE_VAULT;1.1;AES256
+          64303137316635343766303533613132376137616463393561303737616136356666383931653963
+          3663373535303263376435636563313731383634633734350a633235353932306534343437613430
+          64393938366661616465646236373163613262363738333161383134306363313664666665356139
+          3166636363313163300a386339633739653663313665343864353030366464643537363561346233
+          3765
+   
+
+        #- name: user info
+      #ansible.builtin.user:
+        #userid: nikhil
+        #passwd: reddy

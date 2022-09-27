@@ -1,0 +1,22 @@
+---
+- hosts: web
+  tasks:
+    - name: apache install
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+
+    - name: start the apache server
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: change the port no of apache webserver
+      ansible.builtin.template:
+        src: /root/playbook/httpd.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+
+    - name: restart the apache webserver
+      ansible.builtin.service:
+        name: httpd
+        state: restarted  

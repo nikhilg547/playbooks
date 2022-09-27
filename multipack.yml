@@ -1,0 +1,12 @@
+---
+- hosts: nikhil
+  tasks:
+    - name: install multiple packages
+      ansible.builtin.package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - git
+        - tree
+        - java  
+      

@@ -1,0 +1,15 @@
+---
+- hosts: nikhil
+  tasks:
+    - name: install apache if not install
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+      when: ansible_os_family = "Redhat"
+
+    - name: install apache2 if not install
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_os_family = "Debian"    
